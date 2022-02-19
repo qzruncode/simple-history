@@ -1,0 +1,19 @@
+{
+  "name": "simple-history",
+  "version": "1.0.0",
+  "description": "simple history for browser",
+  "author": "qzruncode",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qzruncode/simple-history.git"
+  },
+  "license": "ISC",
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/qzruncode/simple-history/issues"
+  },
+  "homepage": "https://github.com/qzruncode/simple-history#readme",
+  "keywords": [
+    "history"
+  ]
+}
