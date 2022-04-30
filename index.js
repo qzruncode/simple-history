@@ -2,7 +2,6 @@ const SimpleHistory = {
   id: 0,
   listens: {},
   listen(cb) {
-    debugger;
     const cb_id = `listen_${SimpleHistory.id++}`;
     SimpleHistory.listens[cb_id] = cb;
     return cb_id;
