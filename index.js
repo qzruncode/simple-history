@@ -2,6 +2,7 @@ const SimpleHistory = {
   id: 0,
   listens: {},
   listen(cb) {
+    debugger;
     const cb_id = `listen_${SimpleHistory.id++}`;
     SimpleHistory.listens[cb_id] = cb;
     return cb_id;
@@ -11,26 +12,28 @@ const SimpleHistory = {
       delete SimpleHistory.listens[id];
     }
   },
-  callListen(type) {
-    Object.values(SimpleHistory.listens).forEach(cb => cb(type, {
-      pathname: location.pathname,
-      search: location.search,
-      hash: location.hash,
+  callListen(type, preUrl) {
+    Object.values(SimpleHistory.listens).forEach(cb => cb(type, preUrl, {
+      pathname: window.location.pathname,
+      search: window.location.search,
+      hash: window.location.hash,
       state: Object.assign({}, history.state),
     }))
   },
   push(url, state) {
+    const preUrl = window.location.pathname;
     try {
       history.pushState(state, "", url);
     } catch {
-      location.assign(url);
+      window.location.assign(url);
     }
 
-    SimpleHistory.callListen('push');
+    SimpleHistory.callListen('push', preUrl);
   },
   replace(url, state) {
+    const preUrl = window.location.pathname;
     history.replaceState(state, '', url);
-    SimpleHistory.callListen('replace');
+    SimpleHistory.callListen('replace', preUrl);
   },
   go(num) {
     history.go(num);

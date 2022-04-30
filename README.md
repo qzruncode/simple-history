@@ -6,8 +6,8 @@
 ```
 import SimpleHistory from 'simple-history'
 
-const id = SimpleHistory.listen((action, location) => {
-  console.log(action, location)
+const id = SimpleHistory.listen((action, preUrl, location) => {
+  console.log(action, preUrl, location)
 })
 
 SimpleHistory.unlisten(id)
